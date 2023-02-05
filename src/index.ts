@@ -1,9 +1,6 @@
 import { Header } from './components/01.header/header';
+import { List } from './components/02.list/list';
 import { PokeApiRepo } from './services/repository/poke.api.repo';
 
 new Header('.root');
-
-const repo = new PokeApiRepo();
-repo.loadPokemons().then((data) => {
-  console.log(data);
-});
+new List('.main', new PokeApiRepo());

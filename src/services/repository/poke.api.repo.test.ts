@@ -6,9 +6,6 @@ describe('When we have the Api repo created', () => {
     repo = new PokeApiRepo();
   });
   test('Then it should load the api', () => {
-    console.log(repo.loadPokemons);
-  });
-  test('Then it should load the api', () => {
-    console.log(repo.getPokemon);
+    expect(repo).toHaveBeenCalled();
   });
 });
