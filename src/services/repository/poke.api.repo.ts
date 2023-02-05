@@ -8,8 +8,18 @@ export class PokeApiRepo {
 
   async loadPokemons(): Promise<PokemonStructure[]> {
     const resp = await fetch(this.url);
-    const data = (await resp.json()) as PokemonStructure[];
-    return data;
+    const data = await resp.json();
+    console.log(data.next);
+    const pokemonArray = Object.values(data.results);
+    console.log(pokemonArray);
+    const promise = pokemonArray.map(async (pokemon: any) => {
+      let url = pokemon.url;
+      const response = await fetch(url);
+      return response.json();
+    });
+    const pokeData = await Promise.all(promise);
+    console.log(pokeData);
+    return pokeData;
   }
 
   async getPokemon(id: PokemonStructure['id']): Promise<PokemonStructure> {
