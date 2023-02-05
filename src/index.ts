@@ -5,5 +5,5 @@ new Header('.root');
 
 const repo = new PokeApiRepo();
 repo.loadPokemons().then((data) => {
-  console.log(data.name);
+  console.log(data.next);
 });
