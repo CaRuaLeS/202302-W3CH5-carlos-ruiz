@@ -9,7 +9,7 @@ export class PokeApiRepo {
   async loadPokemons(): Promise<PokemonStructure[]> {
     const resp = await fetch(this.url);
     const data = await resp.json();
-    console.log(data);
+    console.log(data.next);
     const pokemonArray = Object.values(data.results);
     console.log(pokemonArray);
     const promise = pokemonArray.map(async (pokemon: any) => {
@@ -20,13 +20,6 @@ export class PokeApiRepo {
     const pokeData = await Promise.all(promise);
     console.log(pokeData);
     return pokeData;
-    // const pokeStructures: any[] = pokeData.map((pokemon) => ({
-    //   id: pokemon.id,
-    //   name: pokemon.name,
-    //   type: pokemon.types,
-    // }));
-    // console.log(pokeStructures);
-    // return pokeStructures;
   }
 
   async getPokemon(id: PokemonStructure['id']): Promise<PokemonStructure> {

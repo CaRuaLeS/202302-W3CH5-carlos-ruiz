@@ -32,12 +32,7 @@ export class List extends Component {
     (document.querySelector('main') as HTMLElement).innerHTML = '';
     super.render(place);
     this.pokemons.forEach((item) => {
-      new PokemonItem(
-        '.pokemon-list',
-        this.pokemons[0],
-        this.updatePokemon.bind(this)
-      );
-      console.log(this.pokemons[0]);
+      new PokemonItem('.pokemon-list', item, this.updatePokemon.bind(this));
     });
   }
 

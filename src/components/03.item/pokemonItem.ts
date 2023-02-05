@@ -23,8 +23,4 @@ export class PokemonItem extends Component {
       </li>
     `;
   }
-
-  render(place: globalThis.InsertPosition) {
-    super.render(place);
-  }
 }
