@@ -9,10 +9,12 @@ type ProtoPokemonList = {
 type ProtoPokemonStructure = {
   name: string;
   image: string;
-  types: string;
+  types: any;
+  type: any;
   abilities: string;
   stats: string;
   weight: number;
+  sprites: any;
 };
 
 type FavouriteList = {
@@ -25,16 +27,18 @@ export type PokemonStructure = ProtoPokemonStructure &
   ProtoPokemonList;
 
 export class Pokemon implements PokemonStructure {
-  //public id: number;
   public isFavourite: boolean;
   constructor(
+    public id: number,
     public name: string,
     public image: string,
     public types: string,
     public abilities: string,
     public stats: string,
     public weight: number,
-    public results: object
+    public results: object,
+    public sprites: any,
+    public type: any
   ) {
     this.isFavourite = false;
   }
